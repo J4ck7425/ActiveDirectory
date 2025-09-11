@@ -44,14 +44,14 @@ AD simplifies the intimidating task of managing hundreds or thousands of users, 
 - Server Name: DC01
    - OS: Windows Server 2022
    - Role: AD DS, DNS, DHCP
-   - `192.168.0.1/24`  
+   - Static IP: `192.168.0.1/24`  
 - Client Name: PC01
    - OS: Windows 10
    - DHCP Enabled  
 - Server Name: DC02
    - OS: Windows Server 2022
    - Role: AD DS, DNS, DHCP
-   - `192.168.1.1/24`  
+   - Static IP: `192.168.1.1/24`  
 
 ---
 

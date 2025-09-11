@@ -57,26 +57,81 @@ AD simplifies the intimidating task of managing hundreds or thousands of users, 
 
 ## 🚀 Walkthrough
 
-### Step 1: Doing the first thing
+### Step 1: Server Setup and Domain Controller Configuration
 
-Description of the step.  
-Here’s what you should see:
+1. Create a new virtual machine in VirtualBox using the **Windows Server 2022 ISO**
+   !(images/step.png)
 
-![Descriptive Alt Text](images/step1.png)
+2. Rename the **Computer name** to `DC01`, requiring a restart
+   !(images/step.png)
+
+3. Assign a **static IP address** of `192.168.0.1/24` to the server
+   !(images/step.png)
+
+4. From **Server Manager**
+   - Navigate to **Manage** > **Add Roles and Features**
+   - Keep default configurations
+   - Install the **Active Directory Domain Services** role and add features
+   - !(images/step.png)
+  
+5. Promote this server to a **Domain Controller**
+   - Select **Add a new forest**, setting **Root domain name**: `bane.com`
+   - Complete the setup with default options and define the **DSRM password**
+   - Once the **Prerequisite Check** passess successfully, click **Install**
+   - Once installed, a restart will be required
+   - !(images/step.png)
 
 ---
 
-### Step 2: Next configuration
+### Step 2: DNS Configuration
 
-Description…
-
-![Descriptive Alt Text](images/step2.png)
+1. From **Server Manager**
+   - Navigate to **Tools** > **DNS**
+   - **DNS Configuration** is automatically handled (Forward Lookup Zone)
+   - !(images/step.png)
+  
+2. Manually create a **Reverse Lookup Zone**
+   - Right-click **Reverse Lookup Zone** and select **New Zone...**
+   - Keep the default configurations
+   - Enter **Network ID**: `192.168.0` and click Next
+   - !(images/step.png)
+  
+3. From **Forward Lookup Zones**
+   - Navigate to `bane.com` > **dc01** and open properties
+   - Tick the **Update associated pointer (PTR) record box
+   - !(images/step.png)
+  
+4. Click **Refresh** to see the **Pointer (PTR) appear
+   !(images/step.png)
 
 ---
 
-### Step 3: Another step
+### Step 3: DHCP Configuration
 
-…
+1. From **Server Manager**
+   - Navigate to **Manage** > **Add Roles and Features**
+   - Keep default configurations
+   - Install the **DHCP Server** role and add features
+   - !(images/step.png)
+  
+2. Complete **DHCP** configuration
+   - Finish setup with default configurations
+   - !(images/step.png)
+  
+3. Create a new **IPv4 Scope** for IP distribution from **Server Manager**
+   - Navigate to **Tools** > **DHCP**
+   - Right-click **IPv4** and select **New Scope...**
+   - **Name**: `BaneIPv4`
+   - Enter the desired **IP Address Range**
+   - Keep default configurations
+   - Set the **Router (Default Gateway)** to `192.168.0.254`
+   - !(images/step.png)
+  
+---
+
+### Step 4: Joining a Client to the Domain
+
+1. 
 
 ---
 

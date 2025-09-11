@@ -40,18 +40,18 @@ AD simplifies the intimidating task of managing hundreds or thousands of users, 
 ---
 
 ## 🔧 Topology
-bane.com
-1. Server Name: DC01
-   OS: Windows Server 2022
-   Role: AD DS, DNS, DHCP
-   `192.168.0.1/24`
-2. Client Name: PC01
-   OS: Windows 10
-   DHCP Enabled
-3. Server Name: DC02
-   OS: Windows Server 2022
-   Role: AD DS, DNS, DHCP
-   `192.168.1.1/24`
+1. Domain Name: bane.com  
+2. Server Name: DC01  
+   OS: Windows Server 2022  
+   Role: AD DS, DNS, DHCP  
+   `192.168.0.1/24`  
+3. Client Name: PC01  
+   OS: Windows 10  
+   DHCP Enabled  
+4. Server Name: DC02  
+   OS: Windows Server 2022  
+   Role: AD DS, DNS, DHCP  
+   `192.168.1.1/24`  
 
 ---
 

@@ -51,7 +51,7 @@ AD simplifies the intimidating task of managing hundreds or thousands of users, 
 - Server Name: DC02
    - OS: Windows Server 2022
    - Role: AD DS, DNS, DHCP
-   - Static IP: `192.168.1.1/24`  
+   - Static IP: `192.168.0.2/24`  
 
 ---
 
@@ -185,6 +185,40 @@ AD simplifies the intimidating task of managing hundreds or thousands of users, 
    - Right-click `Bruce Wayne` > **Properties** > **Member Of**
    - Click **Add...**
    - Enter `Domain Admins` and **Check Names**
+   - !(images/step.png)
+
+---
+
+### Step 7: Installing a Second Domain Controller In AD DS for Fault Tolerance
+
+1. Create a new virtual machine in VirtualBox using the **Windows Server 2022 ISO**
+   !(images/step.png)
+
+2. Rename the **Computer name** to `DC02`, requiring a restart
+   !(images/step.png)
+
+3. Assign a **static IP address** of `192.168.0.2/24` to the server
+   !(images/step.png)
+
+4. Join the `bane.com` domain from **System Settings**
+   - Navigate to **Advanced system settings** > **Computer Name** > **Change...**
+   - Join `bane.com` domain
+   - Enter domain administrator credentials
+   - Restart the virtual machine
+   - !(images/step.png)
+
+5. From **Server Manager**
+   - Navigate to **Manage** > **Add Roles and Features**
+   - Keep default configurations
+   - Install the **Active Directory Domain Services** role and add features
+   - !(images/step.png)
+  
+6. Promote this server to a **Domain Controller**
+   - Select **Add a domain controller to an existing domain**, setting **Domain**: `bane.com`
+   - Complete the setup with default options and define the **DSRM password**
+   - Choose to **Replicate from**: `DC01.bane.com`
+   - Once the **Prerequisite Check** passess successfully, click **Install**
+   - Once installed, a restart will be required
    - !(images/step.png)
 
 ---

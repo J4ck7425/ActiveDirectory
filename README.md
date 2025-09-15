@@ -60,26 +60,27 @@ AD simplifies the intimidating task of managing hundreds or thousands of users, 
 ### Step 1: Server Setup and Domain Controller Configuration
 
 1. Create a new virtual machine in VirtualBox using the **Windows Server 2022 ISO**
-   !(images/step.png)
+   !(images/step 1.png)
 
 2. Rename the **Computer name** to `DC01`, requiring a restart
-   !(images/step.png)
+   !(images/step 2.png)
 
 3. Assign a **static IP address** of `192.168.0.1/24` to the server
-   !(images/step.png)
+   !(images/step 3.png)
 
 4. From **Server Manager**
    - Navigate to **Manage** > **Add Roles and Features**
    - Keep default configurations
    - Install the **Active Directory Domain Services** role and add features
-   - !(images/step.png)
+   - !(images/step 4.png)
   
 5. Promote this server to a **Domain Controller**
    - Select **Add a new forest**, setting **Root domain name**: `bane.com`
    - Complete the setup with default options and define the **DSRM password**
    - Once the **Prerequisite Check** passess successfully, click **Install**
    - Once installed, a restart will be required
-   - !(images/step.png)
+   - !(images/step 5.png)
+   - !(images/step 6.png)
 
 ---
 
@@ -88,21 +89,19 @@ AD simplifies the intimidating task of managing hundreds or thousands of users, 
 1. From **Server Manager**
    - Navigate to **Tools** > **DNS**
    - **DNS Configuration** is automatically handled (Forward Lookup Zone)
-   - !(images/step.png)
-  
-2. Manually create a **Reverse Lookup Zone**
+   - Manually create a **Reverse Lookup Zone**
    - Right-click **Reverse Lookup Zone** and select **New Zone...**
    - Keep the default configurations
    - Enter **Network ID**: `192.168.0` and click Next
-   - !(images/step.png)
+   - !(images/step 7.png)
   
 3. From **Forward Lookup Zones**
    - Navigate to `bane.com` > **dc01** and open properties
    - Tick the **Update associated pointer (PTR) record box
-   - !(images/step.png)
+   - !(images/step 8.png)
   
 4. Click **Refresh** to see the **Pointer (PTR) appear
-   !(images/step.png)
+   !(images/step 9.png)
 
 ---
 
@@ -112,11 +111,11 @@ AD simplifies the intimidating task of managing hundreds or thousands of users, 
    - Navigate to **Manage** > **Add Roles and Features**
    - Keep default configurations
    - Install the **DHCP Server** role and add features
-   - !(images/step.png)
+   - !(images/step 10.png)
   
 2. Complete **DHCP** configuration
    - Finish setup with default configurations
-   - !(images/step.png)
+   - !(images/step 11.png)
   
 3. Create a new **IPv4 Scope** for IP distribution from **Server Manager**
    - Navigate to **Tools** > **DHCP**
@@ -125,24 +124,24 @@ AD simplifies the intimidating task of managing hundreds or thousands of users, 
    - Enter the desired **IP Address Range**
    - Keep default configurations
    - Set the **Router (Default Gateway)** to `192.168.0.254`
-   - !(images/step.png)
+   - !(images/step 12.png)
   
 ---
 
 ### Step 4: Joining a Client to the Domain
 
 1. Create a new virtual machine in VirtualBox using the **Windows 10 ISO** on the same virtual network
-   !(images/step.png)
+   !(images/step 13.png)
 
 2. Verify network settings with `ipconfig /all` in **Command Prompt**, ensuring **DNS** and **DHCP** are working correctly
-   !(images/step.png)
+   !(images/step 14.png)
 
 3. Join the `bane.com` domain from **System Settings**
    - Navigate to **Advanced system settings** > **Computer Name** > **Change...**
    - Join `bane.com` domain
    - Enter domain administrator credentials
    - Restart the virtual machine
-   - !(images/step.png)
+   - !(images/step 15.png)
 
 ---
 
@@ -152,17 +151,17 @@ AD simplifies the intimidating task of managing hundreds or thousands of users, 
    - Navigate to **Tools** > **Active Directory Users and Computers**
    - Right-click `bane.com` > **New** > **Organisational Unit**
    - **Name**: Bane
-   - !(images/step.png)
+   - !(images/step 16.png)
 
 2. Create a **Nested OU**
    - Right-click `Bane` > **New** > **Organisational Unit**
    - **Name**: IT
-   - !(images/step.png)
+   - !(images/step 17.png)
   
 2. Create another **Nested OU**
    - Right-click `Bane` > **New** > **Organisational Unit**
    - **Name**: Staff
-   - !(images/step.png)
+   - !(images/step 18.png)
 
 ---
 
@@ -173,45 +172,45 @@ AD simplifies the intimidating task of managing hundreds or thousands of users, 
    - Expand `Bane`
    - Right-click `IT` > **New** > **User**
    - Enter credentials
-   - !(images/step.png)
+   - !(images/step 19.png)
   
 2. Create a **second user**
    - Expand `Bane`
    - Right-click `Staff` > **New** > **User**
    - Enter credentialsll
-   - !(images/step.png)
+   - !(images/step 20.png)
   
 3. Give a user **Domain Admin** privileges
    - Right-click `Bruce Wayne` > **Properties** > **Member Of**
    - Click **Add...**
    - Enter `Domain Admins` and **Check Names**
-   - !(images/step.png)
+   - !(images/step 21.png)
 
 ---
 
 ### Step 7: Installing a Second Domain Controller In AD DS for Fault Tolerance
 
 1. Create a new virtual machine in VirtualBox using the **Windows Server 2022 ISO**
-   !(images/step.png)
+   !(images/step 22.png)
 
 2. Rename the **Computer name** to `DC02`, requiring a restart
-   !(images/step.png)
+   !(images/step 23.png)
 
 3. Assign a **static IP address** of `192.168.0.2/24` to the server
-   !(images/step.png)
+   !(images/step 24.png)
 
 4. Join the `bane.com` domain from **System Settings**
    - Navigate to **Advanced system settings** > **Computer Name** > **Change...**
    - Join `bane.com` domain
    - Enter domain administrator credentials
    - Restart the virtual machine
-   - !(images/step.png)
+   - !(images/step 25.png)
 
 5. From **Server Manager**
    - Navigate to **Manage** > **Add Roles and Features**
    - Keep default configurations
    - Install the **Active Directory Domain Services** role and add features
-   - !(images/step.png)
+   - !(images/step 26.png)
   
 6. Promote this server to a **Domain Controller**
    - Select **Add a domain controller to an existing domain**, setting **Domain**: `bane.com`
@@ -219,7 +218,8 @@ AD simplifies the intimidating task of managing hundreds or thousands of users, 
    - Choose to **Replicate from**: `DC01.bane.com`
    - Once the **Prerequisite Check** passess successfully, click **Install**
    - Once installed, a restart will be required
-   - !(images/step.png)
+   - !(images/step 27.png)
+   - !(images/step 28.png)
 
 ---
 

@@ -131,7 +131,61 @@ AD simplifies the intimidating task of managing hundreds or thousands of users, 
 
 ### Step 4: Joining a Client to the Domain
 
-1. 
+1. Create a new virtual machine in VirtualBox using the **Windows 10 ISO** on the same virtual network
+   !(images/step.png)
+
+2. Verify network settings with `ipconfig /all` in **Command Prompt**, ensuring **DNS** and **DHCP** are working correctly
+   !(images/step.png)
+
+3. Join the `bane.com` domain from **System Settings**
+   - Navigate to **Advanced system settings** > **Computer Name** > **Change...**
+   - Join `bane.com` domain
+   - Enter domain administrator credentials
+   - Restart the virtual machine
+   - !(images/step.png)
+
+---
+
+### Step 5: Creating Organisational Units (OUs)
+
+1. From **Server Manager**
+   - Navigate to **Tools** > **Active Directory Users and Computers**
+   - Right-click `bane.com` > **New** > **Organisational Unit**
+   - **Name**: Bane
+   - !(images/step.png)
+
+2. Create a **Nested OU**
+   - Right-click `Bane` > **New** > **Organisational Unit**
+   - **Name**: IT
+   - !(images/step.png)
+  
+2. Create another **Nested OU**
+   - Right-click `Bane` > **New** > **Organisational Unit**
+   - **Name**: Staff
+   - !(images/step.png)
+
+---
+
+### Step 6: Creating AD Users
+
+1. From **Server Manager**
+   - Navigate to **Tools** > **Active Directory Users and Computers**
+   - Expand `Bane`
+   - Right-click `IT` > **New** > **User**
+   - Enter credentials
+   - !(images/step.png)
+  
+2. Create a **second user**
+   - Expand `Bane`
+   - Right-click `Staff` > **New** > **User**
+   - Enter credentialsll
+   - !(images/step.png)
+  
+3. Give a user **Domain Admin** privileges
+   - Right-click `Bruce Wayne` > **Properties** > **Member Of**
+   - Click **Add...**
+   - Enter `Domain Admins` and **Check Names**
+   - !(images/step.png)
 
 ---
 

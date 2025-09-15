@@ -60,7 +60,7 @@ AD simplifies the intimidating task of managing hundreds or thousands of users, 
 ### Step 1: Server Setup and Domain Controller Configuration
 
 1. Create a new virtual machine in VirtualBox using the **Windows Server 2022 ISO**
-   !(images/step 1.png)
+   (images/step 1.png)
 
 2. Rename the **Computer name** to `DC01`, requiring a restart
    !(images/step 2.png)

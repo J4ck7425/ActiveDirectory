@@ -223,6 +223,10 @@ AD simplifies the intimidating task of managing hundreds or thousands of users, 
 
 ## 🎯 Key Takeaways
 
-- Point 1  
-- Point 2  
-- Point 3
+- Provides a hands-on introduction to **Active Directory (AD)** concepts and configurations  
+- Demonstrates how to set up a **domain environment** with **DNS** and **DHCP**  
+- Shows how to join Windows clients to a **domain** and manage them centrally
+- Covers creating **OUs**, **Users**, and assigning roles and permissions in **AD**
+- Introduces **Group Policy** for centralised management and security
+- Implements **Fault Tolerance** with a secondary **domain controller** for redundancy
+- Equips leaners with practical skills relevant to enterprise system administration and cybersecurity practices
